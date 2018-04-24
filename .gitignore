@@ -10,3 +10,4 @@ packages
 pubspec.lock
 .flutter-plugins
 android/key.properties
+mobilehotkey_client.code-workspace
