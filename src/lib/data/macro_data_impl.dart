@@ -37,7 +37,7 @@ class MacroRepository
       throw new FetchDataException("Error while getting macros");
     }
 
-    List macroContainer = JSON.decode(responseBody);
+    List macroContainer = new JsonCodec().decode(responseBody);
 
     List<Macro> macros = new List<Macro>();
 

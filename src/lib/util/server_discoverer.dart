@@ -18,8 +18,7 @@ class ServerDiscoverer
   var changeController = new StreamController<ServerDiscoveredEvent>();
   Stream<ServerDiscoveredEvent> get onDiscovered => changeController.stream;
 
-  ServerDiscoverer(){
-  }
+  ServerDiscoverer();
 
   void discover() async{
     socket = await RawDatagramSocket.bind(address, listeningPort);

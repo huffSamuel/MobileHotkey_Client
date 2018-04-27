@@ -30,13 +30,12 @@ class MobileHotkeyHomeState extends State<MobileHotkeyHome> {
       body: new Column(
         children: <Widget>[
           new AppBar(
-            backgroundColor: Colors.green,
+            backgroundColor: Theme.of(context).primaryColor,
             centerTitle: true,
             title: new Text("Mobile Hotkey"),
              actions: <Widget>[
                new GestureDetector(
                  onTap: null,
-                 
                  child: new IconButton(
                    icon: new Icon(Icons.refresh),
                    tooltip: 'Refresh',

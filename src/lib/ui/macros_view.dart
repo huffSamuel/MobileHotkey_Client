@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_hotkey/data/macro.dart';
-import 'package:mobile_hotkey/ui/home/MacroRow.dart';
 import 'package:mobile_hotkey/util/server_discoverer.dart';
 import 'package:mobile_hotkey/data/macro_data_impl.dart';
+import 'package:mobile_hotkey/ui/macro/macro_tile.dart';
 import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 // TODO: This will need a more MVP approach so I can refresh from an external context
 
@@ -46,6 +48,17 @@ class MacrosViewState extends State<MacrosView> {
     {
       throw new Error();
     }
+  }
+
+  void handleMacroTap(int id) {
+    debugPrint(id.toString());
+    final url = Uri.encodeFull(("http://$_serverAddress:12125/api/macros"));
+    final body = new JsonCodec().encode(id);
+
+    http.post(url,
+      headers: { "Content-type": "application/json", "Accept": "application/json"},
+      body: body
+      );
   }
 
   void onServerFound(String serverAddress)
@@ -128,11 +141,16 @@ class MacrosViewState extends State<MacrosView> {
 
       if(_macros.length > 0)
       {
-        child = new ListView.builder(
-            itemBuilder: (context, index) => new MacroRow(_macros[index], _serverAddress, 12125),
-            itemCount: _macros.length,
-            itemExtent: 152.0
-          );
+        child = new Wrap(
+          spacing: 6.0,
+          runSpacing: 4.0,
+          children: _macros.map((macro) { 
+            return new GestureDetector(
+              onTap: () => handleMacroTap(macro.id),
+               child: new MacroTile(macro) 
+            );
+            }).toList()
+        );
       }
       else {
         child = new Container(
