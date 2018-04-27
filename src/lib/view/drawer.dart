@@ -75,10 +75,6 @@ class MobileHotkeyDrawer extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final TextStyle aboutTextStyle = themeData.textTheme.body2;
-    final TextStyle linkStyle = themeData.textTheme.body2.copyWith(color: themeData.accentColor);
-
     final Widget sendFeedbackItem = new ListTile(
       leading: const Icon(Icons.report),
       title: const Text('Submit Issue'),

@@ -5,27 +5,35 @@ import 'dart:convert';
 class MacroTile extends StatelessWidget {
   final Macro macro;
 
+  MacroTile(this.macro);
+
   String getMessageBody() { 
-    return JSON.encode(macro.id);
+    return new JsonCodec().encode(macro.id);
   }
   
   @override
   Widget build(BuildContext context) {
-    final baseTextStyle = const TextStyle(
-      fontFamily: 'Roboto'
+    final tileContent = new Container(
+      width: 145.0,
+      height: 145.0,
+      margin: new EdgeInsets.all(4.0),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Container(height: 4.0),
+          new Center(
+            child: new Text(macro.name,
+            style: Theme.of(context).textTheme.title)
+          )
+        ],
+      )
     );
-
-    final headerTextStyle = baseTextStyle.copyWith(
-      fontSize: 26.0
-    );
-
-    final tileContent = new Container();
 
     final tile = new Container(
-      height: 100.0,
-      margin: new EdgeInsets.only(left: 2.0),
+      margin: new EdgeInsets.all(8.0),
       decoration: new BoxDecoration(
-        color: new Color(0xFF333366),
+        color: Theme.of(context).accentColor,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(4.0),
         boxShadow: <BoxShadow>[

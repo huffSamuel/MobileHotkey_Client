@@ -49,7 +49,7 @@ class MobileHotkeyAppState extends State<MobileHotkeyApp>{
       case ThemeMode.dark:
         return new ThemeData(
           brightness: Brightness.dark,
-          primarySwatch: Colors.deepOrange
+          primarySwatch: Colors.deepPurple
         );
     }
     assert(_configuration.themeMode != null);
@@ -73,6 +73,7 @@ class MobileHotkeyAppState extends State<MobileHotkeyApp>{
       theme: new ThemeData(
         fontFamily: 'Roboto',
         primarySwatch: Colors.teal,
+        accentColor: Colors.deepPurpleAccent,
         secondaryHeaderColor: Colors.orangeAccent
       ),
       home: new MobileHotkeyHome(),
