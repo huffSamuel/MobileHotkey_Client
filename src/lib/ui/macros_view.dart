@@ -88,20 +88,20 @@ class MacrosViewState extends State<MacrosView> {
     // else
 
     if(_lookingForServer) {
-      widget = new Container(
+      widget = Container(
         padding: const EdgeInsets.only(left:16.0, right:16.0, top:24.0),
-        child: new Center(
-          child: new Column(
+        child: Center(
+          child: Column(
             children: <Widget>[
-              new Padding(
+              Padding(
                 padding: const EdgeInsets.only(left:16.0, right:16.0),
-                child: new CircularProgressIndicator(),
+                child: CircularProgressIndicator(),
               ),
-              new Padding(
+              Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: new Text(
+                child: Text(
                   "Looking for server...",
-                  style: new TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400
@@ -115,16 +115,16 @@ class MacrosViewState extends State<MacrosView> {
     }
     else if(_loadingMacros)
     {
-      widget = new Container(
+      widget = Container(
         padding: const EdgeInsets.only(left:16.0, right:16.0, top:24.0),
-        child: new Center(
-          child: new Column(
+        child: Center(
+          child: Column(
             children: <Widget>[
-              new Padding(
+              Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: new Text(
+                child: Text(
                   "Loading macros...",
-                  style: new TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400
@@ -141,28 +141,28 @@ class MacrosViewState extends State<MacrosView> {
 
       if(_macros.length > 0)
       {
-        child = new Wrap(
+        child = Wrap(
           spacing: 6.0,
           runSpacing: 4.0,
           children: _macros.map((macro) { 
-            return new GestureDetector(
+            return GestureDetector(
               onTap: () => handleMacroTap(macro.id),
-               child: new MacroTile(macro) 
+               child: MacroTile(macro) 
             );
             }).toList()
         );
       }
       else {
-        child = new Container(
+        child = Container(
         padding: const EdgeInsets.only(left:16.0, right:16.0, top:24.0),
-        child: new Center(
-          child: new Column(
+        child: Center(
+          child: Column(
             children: <Widget>[
-              new Padding(
+              Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: new Text(
+                child: Text(
                   "No macros found...",
-                  style: new TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400
@@ -175,8 +175,8 @@ class MacrosViewState extends State<MacrosView> {
       );
       }
 
-      widget = new Expanded(
-        child: new RefreshIndicator(
+      widget = Expanded(
+        child: RefreshIndicator(
           onRefresh: handleRefresh,
           child: child
         )
