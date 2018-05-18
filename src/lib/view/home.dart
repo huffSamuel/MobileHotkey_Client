@@ -34,13 +34,7 @@ class MobileHotkeyHomeState extends State<MobileHotkeyHome> {
             centerTitle: true,
             title: new Text("Mobile Hotkey"),
              actions: <Widget>[
-               new GestureDetector(
-                 onTap: null,
-                 child: new IconButton(
-                   icon: new Icon(Icons.refresh),
-                   tooltip: 'Refresh',
-                   onPressed: () { macrosView.refresh(); })
-               )
+               
              ],
             ),
           macrosView
